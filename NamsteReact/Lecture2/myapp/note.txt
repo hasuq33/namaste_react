@@ -1,0 +1,2 @@
+(1) - When you use npx parcel build index.html - remove the "main" entry point from the package.json
+(2) - Browser's List in package.json for the add supporting older version of browser
