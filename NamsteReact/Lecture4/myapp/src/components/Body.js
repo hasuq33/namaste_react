@@ -30,22 +30,24 @@ const Body = () =>{
 
     const onlineStatus = useOnlineStatus(); 
     if(onlineStatus === false){
-        return <h1>You are offline 🫡</h1>
+        return <h1>You are Offline 🫡</h1>
     }
 
     // This is callled Conditional rendering
     return restaurantData.length ===0 ? <Shimmer/>: (
         <div className='body'>
-            <div className="search">
-                <input type="text" className="search-box" value={searchText} onChange={(ev)=>{
+            <div className="flex">
+            <div className="m-4 p-4 ">
+                <input type="text" className="border border-solid border-black" value={searchText} onChange={(ev)=>{
                     setSeachText(ev.target.value)
                 }}/>
-                <button className="search-btn" onClick={()=>{
+                <button className="px-4 py-2 bg-green-300 mx-4 text-white rounded-lg" onClick={()=>{
                     const filterd_data = restaurantData.filter((item)=>  item.info.name.toLowerCase().includes(searchText.toLowerCase()) );
                     setlistofRestaurnt(filterd_data);
                 }}>Search</button>
             </div>
-            <button className='filter-btn' onClick={()=>{
+            <div className="flex items-center">
+            <button className='px-4 py-2 bg-gray-100 rounded' onClick={()=>{
                 // Filtering logic here
                 const filteredList = restaurantData.filter((item)=>{
                     return item.info.avgRating > 4;
@@ -54,7 +56,9 @@ const Body = () =>{
                 setlistofRestaurnt(filteredList);  
 
             }}>Top Rated RestaurantCard</button>
-            <div className='res-container'>
+            </div>
+            </div>
+            <div className='res-container flex flex-wrap'>
                 {
                     listofRestaurnt.map((restaurant)=>{
                        return <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard key={restaurant.info.id}  resData={restaurant}/></Link>
