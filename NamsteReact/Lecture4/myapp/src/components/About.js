@@ -15,7 +15,7 @@ class About extends Component{
             <UserClass name={"Harshiv Joshi Class"} location={"Kapdvanj Class"}/>
             <div>LoggedIn User:
                 <UserContext.Consumer>
-                    {(data)=>console.log(data)}
+                    {({loggedInUser})=>(<h1 className="text-xl font-bold">{loggedInUser}</h1>)}
                 </UserContext.Consumer>
             </div>
             <h1>About US</h1>

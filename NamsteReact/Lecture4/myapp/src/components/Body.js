@@ -1,9 +1,10 @@
 import RestaurantCard , { withPromatedLabel} from "./RestaurantCard";
 import resObj from "../utils/mockData";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext.js";
 
 const Body = () =>{
     const onlineStatus = useOnlineStatus(); 
@@ -11,10 +12,13 @@ const Body = () =>{
         return <h1>You are Offline 🫡</h1>
     }
 
+    const {loggedInUser , setUserName} = useContext(UserContext);
+
     //Local State Variables  - Super  powerful variables (inside the component)
     const [listofRestaurnt, setlistofRestaurnt] = useState([]);
     const [searchText , setSeachText ] = useState("");
     const [ restaurantData , setRaurantData] = useState([]);
+    const [inputValue , setInputValue] = useState(loggedInUser)
 
     const ResTaurantCardPramoted = withPromatedLabel(RestaurantCard);
 
@@ -58,6 +62,14 @@ const Body = () =>{
                 setlistofRestaurnt(filteredList);  
 
             }}>Top Rated RestaurantCard</button>
+            </div>
+            <div className="flex items-center mx-2"> 
+                <label for="username">UserName: </label>
+                <input id="username" type="text" className="border " value={inputValue}
+                onChange={(ev)=> setInputValue(ev.target.value)}
+                onKeyUp={(ev)=>{
+                    if(ev.key === 'Enter') setUserName(inputValue);
+                }}/>
             </div>
             </div>
             <div className='res-container flex flex-wrap'>
