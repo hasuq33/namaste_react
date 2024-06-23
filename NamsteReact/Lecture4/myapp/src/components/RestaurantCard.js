@@ -14,4 +14,21 @@ const RestaurantCard = (props) =>{
     )
 }
 
+// Higher Order Component
+
+// input RestaurantCard  ==> ResTaurantCardPramoted
+
+export const withPromatedLabel = ( RestaurantCard )=>{
+    return(props) =>{
+        return(
+            <>
+            <div className="relative">
+                <label className="absolute left-4 top-0 bg-black text-white rounded p-[1px]">Opened</label>
+                <RestaurantCard {...props}/>
+            </div>
+            </>
+        )
+    }
+}
+
 export default RestaurantCard

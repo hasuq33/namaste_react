@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard , { withPromatedLabel} from "./RestaurantCard";
 import resObj from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
@@ -6,11 +6,17 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () =>{
+    const onlineStatus = useOnlineStatus(); 
+    if(onlineStatus === false){
+        return <h1>You are Offline 🫡</h1>
+    }
 
     //Local State Variables  - Super  powerful variables (inside the component)
     const [listofRestaurnt, setlistofRestaurnt] = useState([]);
     const [searchText , setSeachText ] = useState("");
     const [ restaurantData , setRaurantData] = useState([]);
+
+    const ResTaurantCardPramoted = withPromatedLabel(RestaurantCard);
 
     useEffect(()=>{
         fetchData();
@@ -28,10 +34,6 @@ const Body = () =>{
         setRaurantData(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
-    const onlineStatus = useOnlineStatus(); 
-    if(onlineStatus === false){
-        return <h1>You are Offline 🫡</h1>
-    }
 
     // This is callled Conditional rendering
     return restaurantData.length ===0 ? <Shimmer/>: (
@@ -61,7 +63,11 @@ const Body = () =>{
             <div className='res-container flex flex-wrap'>
                 {
                     listofRestaurnt.map((restaurant)=>{
-                       return <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard key={restaurant.info.id}  resData={restaurant}/></Link>
+                       return <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}>
+                        {
+                             restaurant.info.isOpen ? <ResTaurantCardPramoted key={restaurant.info.id}  resData={restaurant}/> :  <RestaurantCard key={restaurant.info.id}  resData={restaurant}/>
+                        }
+                        </Link>
                     })
                 }
             </div>
