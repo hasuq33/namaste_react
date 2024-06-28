@@ -33,3 +33,13 @@
 
  # UserContext 
  - You can use nest the UserContext component and pass different values in it. 
+
+ # Redux Toolkit 
+  - Install @reduxjs/toolkit and react-redux
+  - Build Our Store
+  - Connect our store to our app
+  - Slice (CartSliece)
+  - dispatch(action)
+  - Selector 
+  - RTk Says either Mutate the existing state or return a new state 
+  

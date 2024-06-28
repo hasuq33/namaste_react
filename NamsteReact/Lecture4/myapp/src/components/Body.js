@@ -64,7 +64,7 @@ const Body = () =>{
             }}>Top Rated RestaurantCard</button>
             </div>
             <div className="flex items-center mx-2"> 
-                <label for="username">UserName: </label>
+                <label htmlFor="username">UserName: </label>
                 <input id="username" type="text" className="border " value={inputValue}
                 onChange={(ev)=> setInputValue(ev.target.value)}
                 onKeyUp={(ev)=>{
