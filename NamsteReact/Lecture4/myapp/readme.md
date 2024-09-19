@@ -43,3 +43,18 @@
   - Selector 
   - RTk Says either Mutate the existing state or return a new state 
   
+ # Types of Testing (developer)
+  - Unit Testing
+  - Integration Testing
+  - End to End Testing -e2e testing 
+
+ # Setting up Testting for our Apps
+  - Installed React Testing Library
+  - Installed Jest
+  - Installed Babel Dependency 
+  - Configure Babel
+  - Configure Parcel Config file to disable default babel transpilation
+  - Jest configurations (npm jest --init)
+  - Install JSDOM Library
+  - Install @testing-library/jest-dom Library for Test JSX Component
+  - Include @babel/preset-react in Babel config 
