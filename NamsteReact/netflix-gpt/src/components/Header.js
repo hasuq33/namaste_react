@@ -12,7 +12,6 @@ const Header = () => {
   const navigate = useNavigate(); 
   const user = useSelector(store => store.user);
   const isGptSearch = useSelector(store => store.gpt.showGptSearch)
-  debugger
   const dispatch = useDispatch();
   const selectLanguageRef = useRef(null); 
 

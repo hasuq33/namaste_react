@@ -8,8 +8,7 @@ export const MOVIE_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZTMzOWYzOTQxMzY4MDNkOGE5ZWZlZTI3M2YzZjliZCIsIm5iZiI6MTcyODc0OTE4OC41MTE1OTYsInN1YiI6IjY3MGE1NjQ2ZjU4YTkyMDZhYTQwNjI4YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Tac3RodyNG7QS6id9PpFLBRNLP5ojqGT4a66hVewBOI",
+    Authorization: `Bearer ${process.env.TMDB_API}`,
   },
 };
 
@@ -23,3 +22,5 @@ export const SUPPORTED_LANGUAGE = [
   { identifier: "gujarati", name: "ગુજરાતી" },
   { identifier: "hindi", name: "हिन्दी" },
 ];
+
+export const OPENAI_KEY = `${process.env.OPEN_AI_KEY}` ; 
